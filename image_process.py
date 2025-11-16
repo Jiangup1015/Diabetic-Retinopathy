@@ -9,7 +9,6 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path):
 
     # 尋找輪廓
     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    print(f"  找到輪廓數量: {len(contours)}")
 
     if len(contours) > 0:
         # 建立並寫入 txt 檔案
@@ -25,7 +24,7 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path):
                 height = h / nr
 
                 # 寫入檔案 (YOLO 格式)
-                f.write(f"0 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
+                f.write(f"5 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
                 
                 # 同時在控制台顯示 (可選)
                 # print(f"0 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}")
@@ -34,7 +33,7 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path):
         # print(f"共找到 {len(contours)} 個輪廓")
     else:
         open(output_txt_path, 'w').close()
-        print(f"沒找到輪廓，建立空的 txt 檔案: {output_txt_path}")
+        # print(f"沒找到輪廓，建立空的 txt 檔案: {output_txt_path}")
     
 def read_folder_files(folder_path):
     """
@@ -59,8 +58,8 @@ def read_folder_files(folder_path):
 
 #############  main  #############
 
-folder_path = r"dataset\IDRiD\A. Segmentation\2. All Segmentation Groundtruths\b. Testing set\4. Soft Exudates"
-output_folder = r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\labels\val\4. Soft Exudates"
+folder_path = r"dataset\IDRiD\A. Segmentation\2. All Segmentation Groundtruths\b. Testing Set\5. Optic Disc"
+output_folder = r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\labels\val\5. Optic Disc"
 
 # 確保輸出資料夾存在
 if not os.path.exists(output_folder):
