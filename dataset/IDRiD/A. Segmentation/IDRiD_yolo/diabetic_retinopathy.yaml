@@ -1,0 +1,17 @@
+# YOLO 糖尿病視網膜病變資料集配置
+path: C:\Users\user\Desktop\code\vsc git\Diabetic-Retinopathy\dataset\IDRiD\A. Segmentation\IDRiD_yolo  # 資料集根目錄
+train: images/train   # 訓練圖片路徑
+val: images/val       # 驗證圖片路徑
+
+# 類別名稱 (根據您的病灶類型修改)
+nc: 5  # 類別數量
+names: 
+  0: Microaneurysms  # 微動脈瘤
+  1: Haemorrhages  # 出血
+  2: Hard Exudates  # 硬性滲出物
+  3: Soft Exudates  # 軟性滲出物
+  4: Optic Disc  # 視神經盤
+
+# 下載指令/說明
+# download: |
+#   # 在這裡添加下載指令或說明

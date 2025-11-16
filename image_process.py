@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import os
+import re
 
 def Image_turn_to_yolo(img, nc, nr, output_txt_path):
     # 轉為灰階並二值化
@@ -24,7 +25,7 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path):
                 height = h / nr
 
                 # 寫入檔案 (YOLO 格式)
-                f.write(f"5 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
+                f.write(f"1 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
                 
                 # 同時在控制台顯示 (可選)
                 # print(f"0 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}")
@@ -58,8 +59,8 @@ def read_folder_files(folder_path):
 
 #############  main  #############
 
-folder_path = r"dataset\IDRiD\A. Segmentation\2. All Segmentation Groundtruths\b. Testing Set\5. Optic Disc"
-output_folder = r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\labels\val\5. Optic Disc"
+folder_path = r"dataset\IDRiD\A. Segmentation\2. All Segmentation Groundtruths\a. Training Set\2. Haemorrhages"
+output_folder = r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\labels\train\2. Haemorrhages"
 
 # 確保輸出資料夾存在
 if not os.path.exists(output_folder):
@@ -77,7 +78,10 @@ for file in files:
     # 輸出 txt 檔案路徑 - 正確的寫法
     # 取得檔案名稱（不含副檔名）
     file_name_without_ext = os.path.splitext(file)[0]
+    file_name_without_ext = re.sub(r'_(MA|HE|EX|SE|OD)$', '', file_name_without_ext)
+
     output_txt_path = os.path.join(output_folder, f"{file_name_without_ext}.txt")
+   
     
     # print(f"處理: {file} -> {output_txt_path}")
     
