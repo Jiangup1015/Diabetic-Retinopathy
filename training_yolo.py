@@ -95,7 +95,6 @@ def train_diabetic_retinopathy_model():
             'name': 'diabetic_retinopathy_v1',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
-            'workers': 0          # 根據系統調整工作線程數
         }
         
         print("🚀 開始訓練...")
