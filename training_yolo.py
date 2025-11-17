@@ -10,7 +10,7 @@ def setup_environment():
     print("🚀 設定訓練環境...")
     
     # 確保 YAML 配置文件存在
-    yaml_path = r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\diabetic_retinopathy.yaml"
+    yaml_path = r"diabetic_retinopathy.yaml"
     if not os.path.exists(yaml_path):
         print("❌ YAML 配置文件不存在，請先建立")
         return None
@@ -70,9 +70,10 @@ def train_diabetic_retinopathy_model():
     print("\n🎯 開始訓練糖尿病視網膜病變檢測模型...")
     
     # 設定環境
-    yaml_path = setup_environment()
-    if not yaml_path:
-        return
+    # yaml_path = setup_environment()
+    # if not yaml_path:
+    #     return
+    yaml_path = r"diabetic_retinopathy.yaml"
     
     # 分析資料集
     # analyze_dataset()
@@ -85,7 +86,7 @@ def train_diabetic_retinopathy_model():
         # 訓練參數
         train_args = {
             'data': yaml_path,
-            'epochs': 10,
+            'epochs': 50,
             'imgsz': 640,
             'batch': 8,           # 視網膜圖片較大，使用較小的批次
             'patience': 20,       # 早停耐心值

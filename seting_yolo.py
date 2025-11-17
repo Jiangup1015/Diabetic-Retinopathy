@@ -11,18 +11,18 @@ val: images/val       # 驗證圖片路徑
 # 類別名稱 (根據您的病灶類型修改)
 nc: 5  # 類別數量
 names: 
-  1: Microaneurysms  # 微動脈瘤
-  2: Haemorrhages  # 出血
-  3: Hard Exudates  # 硬性滲出物
-  4: Soft Exudates  # 軟性滲出物
-  5: Optic Disc  # 視神經盤
+  0: Microaneurysms  # 微動脈瘤
+  1: Haemorrhages  # 出血
+  2: Hard Exudates  # 硬性滲出物
+  3: Soft Exudates  # 軟性滲出物
+  4: Optic Disc  # 視神經盤
 
 # 下載指令/說明
 # download: |
 #   # 在這裡添加下載指令或說明
 """
     
-    yaml_path = r"dataset\IDRiD\A. Segmentation\IDRiD_yolo\diabetic_retinopathy.yaml"
+    yaml_path = r"diabetic_retinopathy.yaml"
     
     with open(yaml_path, 'w', encoding='utf-8') as f:
         f.write(yaml_content)
