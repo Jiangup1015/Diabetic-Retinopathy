@@ -1,8 +1,8 @@
 task: detect
 mode: train
-model: yolov12s.pt
+model: yolo12.yaml
 data: dataset\IDRiD\A. Segmentation\IDRiD_yolo\diabetic_retinopathy.yaml
-epochs: 100
+epochs: 10
 time: null
 patience: 20
 batch: 8
@@ -11,7 +11,7 @@ save: true
 save_period: -1
 cache: false
 device: cpu
-workers: 8
+workers: 0
 project: runs/detect
 name: diabetic_retinopathy_v1
 exist_ok: true

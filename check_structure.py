@@ -31,7 +31,7 @@ def check_dataset_structure(base_path):
         labels_dir = base / 'labels' / split
         
         if images_dir.exists() and labels_dir.exists():
-            image_files = {f.stem for f in images_dir.glob('*') if f.suffix.lower() in ['.jpg', '.png', '.tif']}
+            image_files = {f.stem for f in images_dir.glob('*') if f.suffix.lower() in ['.jpg']}
             label_files = {f.stem for f in labels_dir.glob('*.txt')}
             
             common_files = image_files & label_files
