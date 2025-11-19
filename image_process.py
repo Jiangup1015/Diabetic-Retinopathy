@@ -19,10 +19,10 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
                 x, y, w, h = cv2.boundingRect(contour)
 
                 # 計算 YOLO 格式座標 (歸一化)
-                x_center = (x + w / 2) / nc
-                y_center = (y + h / 2) / nr
-                width = w / nc
-                height = h / nr
+                x_center = max(0, min(1, (x + w / 2) / nc))
+                y_center = max(0, min(1, (y + h / 2) / nr))
+                width = max(0, min(1, w / nc))
+                height = max(0, min(1, h / nr))
 
                 # 寫入檔案 (YOLO 格式)
                 f.write(f"{label} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
