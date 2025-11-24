@@ -86,14 +86,14 @@ def train_diabetic_retinopathy_model():
         # 訓練參數
         train_args = {
             'data': yaml_path,
-            'epochs': 50,
-            'imgsz': 640,
+            'epochs': 100,
+            'imgsz': 800,
             'batch': 8,           # 視網膜圖片較大，使用較小的批次
             'patience': 20,       # 早停耐心值
             'save': True,
             'device': [0] if torch.cuda.is_available() else 'cpu',  # 自動選 GPU 或 CPU
             'project': 'runs/detect',
-            'name': 'diabetic_retinopathy_v1',
+            'name': 'diabetic_retinopathy_800v1',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }
@@ -152,7 +152,7 @@ def main():
         validate_model(model)
         
         print("\n🎉 訓練流程完成！")
-        print("📁 訓練結果保存在: runs/detect/diabetic_retinopathy_v1")
+        print("📁 訓練結果保存在: runs/detect/")
         print("💡 您可以使用訓練好的模型進行預測:")
         print("   results = model('path/to/image.jpg')")
     

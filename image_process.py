@@ -19,22 +19,15 @@ def Image_turn_to_yolo(img, nc, nr, output_txt_path, label):
                 x, y, w, h = cv2.boundingRect(contour)
 
                 # 計算 YOLO 格式座標 (歸一化)
-                x_center = max(0, min(1, (x + w / 2) / nc))
-                y_center = max(0, min(1, (y + h / 2) / nr))
-                width = max(0, min(1, w / nc))
-                height = max(0, min(1, h / nr))
+                x_center = max(0, min(1, (x + w / 2) / nr))
+                y_center = max(0, min(1, (y + h / 2) / nc))
+                width = max(0, min(1, w / nr))
+                height = max(0, min(1, h / nc))
 
                 # 寫入檔案 (YOLO 格式)
                 f.write(f"{label} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
-                
-                # 同時在控制台顯示 (可選)
-                # print(f"0 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}")
-        
-        # print(f"YOLO 標註檔案已保存: {output_txt_path}")
-        # print(f"共找到 {len(contours)} 個輪廓")
     else:
         open(output_txt_path, 'w').close()
-        # print(f"沒找到輪廓，建立空的 txt 檔案: {output_txt_path}")
     
 def read_folder_files(folder_path):
     """
@@ -106,7 +99,7 @@ for file in FileList:
                     print(f"建立空的 txt 檔案: {output_txt_path}")
                 else:
                     # 獲取圖片尺寸
-                    nc, nr = img.shape[:2]  # nc = 寬度, nr = 高度
+                    nc, nr = img.shape[:2]
                     # print(f"圖片尺寸: {nc} x {nr}")
                     
                     # 轉換為 YOLO 格式並保存為 txt
