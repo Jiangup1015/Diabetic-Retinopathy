@@ -87,13 +87,13 @@ def train_diabetic_retinopathy_model():
         train_args = {
             'data': yaml_path,
             'epochs': 100,
-            'imgsz': 800,
+            'imgsz': 640,
             'batch': 8,           # 視網膜圖片較大，使用較小的批次
             'patience': 20,       # 早停耐心值
             'save': True,
             'device': [0] if torch.cuda.is_available() else 'cpu',  # 自動選 GPU 或 CPU
             'project': 'runs/detect',
-            'name': 'diabetic_retinopathy_800v1',
+            'name': 'diabetic_retinopathy_640v1',
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }
