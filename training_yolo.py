@@ -97,7 +97,11 @@ def train_diabetic_retinopathy_model():
             'exist_ok': True,     # 允許覆蓋現有實驗
             'verbose': True,      # 顯示詳細輸出
         }
-        
+        print(f"PyTorch 版本: {torch.__version__}")
+        print(f"CUDA 可用: {torch.cuda.is_available()}")
+        if torch.cuda.is_available():
+            print(f"CUDA 版本: {torch.version.cuda}")
+            print(f"GPU 名稱: {torch.cuda.get_device_name(0)}")
         print("🚀 開始訓練...")
         print("這可能需要一些時間，請耐心等待...")
         
